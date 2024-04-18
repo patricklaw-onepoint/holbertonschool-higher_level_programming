@@ -9,8 +9,8 @@ def roman_to_int(roman_string):
     total = 0
     i = 0
     while i < len(roman_string):
-        if i + 1 < len(roman_string) and roman_string[i : i + 2] in group:
-            total += group[roman_string[i : i + 2]]
+        if i + 1 < len(roman_string) and roman_string[i:i+2] in group:
+            total += group[roman_string[i:i+2]]
             i += 2
         else:
             total += single[roman_string[i]]

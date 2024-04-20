@@ -22,3 +22,12 @@ class Square:
 
     def area(self):
         return self.__size**2
+
+    def my_print(self):
+        """Print ASCII art representation of a square with #s"""
+        if self.__size == 0:
+            print()
+        else:
+            square_line = "#" * self.__size
+            for _ in range(self.__size):
+                print(square_line)

@@ -3,6 +3,7 @@
 
 
 class BaseGeometry:
+    """Class for a basic shape"""
 
     def area(self):
         """TODO"""

@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """Python - Input/Output"""
 
+import json
+
 
 def to_json_string(my_obj):
     """Function that returns the JSON representation of an object (string):"""
-    # TODO
+    return json.dumps(my_obj)

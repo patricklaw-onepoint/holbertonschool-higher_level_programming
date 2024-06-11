@@ -5,15 +5,13 @@
 
 # Input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>
 # Each 10 lines and after a keyboard interruption (CTRL + C), prints those statistics since the beginning:
-## Total file size: File size: <total size>
-## where is the sum of all previous (see input format above)
-## Number of lines by status code:
-### possible status code: 200, 301, 400, 401, 403, 404, 405 and 500
-### if a status code doesn’t appear, don’t print anything for this status code
-### format: <status code>: <number>
-### status codes should be printed in ascending order
-
-import sys
+#   Total file size: File size: <total size>
+#   where is the sum of all previous (see input format above)
+#   Number of lines by status code:
+#       possible status code: 200, 301, 400, 401, 403, 404, 405 and 500
+#       if a status code doesn’t appear, don’t print anything for this status code
+#       format: <status code>: <number>
+#       status codes should be printed in ascending order
 
 """
 77.209.146.200 - [2024-06-11 18:16:21.751878] "GET /projects/260 HTTP/1.1" 401 138
@@ -31,20 +29,20 @@ import sys
 import sys
 
 if __name__ == "__main__":
-    total_size = 0
+    total_size = [0]
     codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
 
     def parse_line(line):
         try:
             _, code_str, size_str = line.rsplit(maxsplit=2)
+            total_size[0] += int(size_str)
             code = int(code_str)
-            total_size += int(size_str)
             codes[code] = codes.get(code, 0) + 1
         except ValueError:
             pass
 
     def print_stats():
-        print(f"File size: {total_size}")
+        print(f"File size: {total_size[0]}")
         for code, count in sorted(codes.items()):
             if count > 0:
                 print(f"{code}: {count}")

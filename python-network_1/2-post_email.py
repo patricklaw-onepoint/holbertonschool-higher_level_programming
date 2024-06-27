@@ -10,8 +10,8 @@ if __name__ == "__main__":
     value = {"email": argv[2]}
     # url = "http://0.0.0.0:5000/post_email"
     # value = {"email": "hr@holbertonschool.com"}
-    data = urlencode(value).encode("ascii")
+    data = urlencode(value).encode("utf-8")
     request = Request(url, data)
 
     with urlopen(request) as response:
-        print(response.read().decode("utf-8", "replace"))
+        print(response.read().decode("utf-8"))

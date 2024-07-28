@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""lists all states from the database hbtn_0e_0_usa"""
+"""lists all states with a name starting with N (upper N)"""
 from sys import argv
 import MySQLdb
 
@@ -14,7 +14,11 @@ if __name__ == "__main__":
     )
     cur = conn.cursor()
     cur.execute(
-        "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY states.id ASC"
+        """
+        SELECT * FROM states
+        WHERE BINARY name LIKE 'N%'
+        ORDER BY states.id ASC
+        """
     )
     query_rows = cur.fetchall()
     for row in query_rows:
